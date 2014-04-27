@@ -11,13 +11,14 @@ ADD etc/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 
 ADD http://download-new.utorrent.com/endpoint/utserver/os/linux-x64-ubuntu-13-04/track/beta/ /opt/utserver.tar.gz
 RUN tar -C /opt -xvzf /opt/utserver.tar.gz
-RUN mv /opt/utorrent-server-alpha-v3_3 /opt/utorrent-server
-ADD etc/supervisor/conf.d/utorrent-server.sv.conf /etc/supervisor/conf.d/utorrent-server.sv.conf
-ADD opt/utorrent-server/utserver.conf /opt/utorrent-server/utserver.conf
+RUN mv /opt/utorrent-server-alpha-v3_3 /opt/utserver
+ADD etc/supervisor/conf.d/utserver.sv.conf /etc/supervisor/conf.d/utserver.sv.conf
 
 EXPOSE 6881
 EXPOSE 8080
 
-VOLUME /mnt/downloads
+VOLUME /mnt/active
+VOLUME /mnt/complete
+VOLUME /mnt/torrents
 
 CMD supervisord -c /etc/supervisor/supervisord.conf
