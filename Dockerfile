@@ -17,8 +17,6 @@ ADD etc/supervisor/conf.d/utserver.sv.conf /etc/supervisor/conf.d/utserver.sv.co
 EXPOSE 6881
 EXPOSE 8080
 
-VOLUME /mnt/active
-VOLUME /mnt/complete
-VOLUME /mnt/torrents
+VOLUME /mnt/data
 
 CMD supervisord -c /etc/supervisor/supervisord.conf
